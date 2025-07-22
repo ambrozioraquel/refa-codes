@@ -1,0 +1,43 @@
+# Arquivos temporários e binários
+target/
+build/
+
+# Exceções para targets/diretórios de build dentro de src (se necessário para testes ou builds específicos)
+!**/src/main/**/target/
+!**/src/test/**/target/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# Arquivo de ajuda que provavelmente não precisa ser versionado
+HELP.md
+
+# Maven Wrapper - geralmente se versiona tudo da pasta .mvn, exceto JARs grandes, mas o jar do wrapper é necessário
+.mvn/wrapper/maven-wrapper.jar
+
+# IDE: Spring Tool Suite (STS)
+.apt_generated/
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache/
+
+# IDE: IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# IDE: NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# IDE: VS Code
+.vscode/
+
+# Arquivo de configuração local (geralmente não compartilhado)
+settings-local.xml
