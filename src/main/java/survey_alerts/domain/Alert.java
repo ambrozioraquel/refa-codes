@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import survey_alerts.constant.AlertDescriptionType;
 
 @Data
 @AllArgsConstructor
@@ -19,6 +20,6 @@ public class Alert {
     private String pointOfSale;
     private String description;
     private String product;
-    private int type;
+    private AlertDescriptionType type;
     private int priceDiff;
 }

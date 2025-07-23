@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
+import static survey_alerts.constant.AlertDescriptionType.*;
 import static survey_alerts.constant.Constants.*;
 
 @Component
@@ -60,7 +61,7 @@ public class AlertFactory {
                 survey.getPointOfSale(),
                 ALERT_DESC_ABSENT,
                 survey.getProduct(),
-                DESC_ABSENT,
+                ABSENT,
                 0
         );
     }
@@ -70,7 +71,7 @@ public class AlertFactory {
                 survey.getPointOfSale(),
                 ALERT_DESC_PRICE,
                 survey.getProduct(),
-                DESC_PRICE,
+                PRICE,
                 priceDifference
         );
     }

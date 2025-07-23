@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import survey_alerts.constant.AlertDescriptionType;
 import survey_alerts.domain.*;
 import survey_alerts.repository.AlertRepository;
 import survey_alerts.repository.SurveyRepository;
@@ -56,8 +57,8 @@ class SurveyAlertServiceTest {
 
         survey.setAnswers(List.of(a1, a2));
 
-        Alert alert1 = new Alert(null,"Loja 1", "Ruptura detectada!", "Arroz", 1, 0);
-        Alert alert2 = new Alert(null,"Loja 1", "Preço acima do estipulado!", "Arroz", 2, 1);
+        Alert alert1 = new Alert(null,"Loja 1", "Ruptura detectada!", "Arroz", AlertDescriptionType.ABSENT, 0);
+        Alert alert2 = new Alert(null,"Loja 1", "Preço acima do estipulado!", "Arroz", AlertDescriptionType.PRICE, 1);
 
         when(surveyRepository.findAll()).thenReturn(List.of(survey));
         when(alertFactory.createAlertsFromSurvey(any())).thenReturn(List.of(alert1, alert2));
