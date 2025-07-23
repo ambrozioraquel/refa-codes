@@ -1,43 +1,26 @@
 package survey_alerts.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
 public class Survey {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String pointOfSale;
     private String expectedPrice;
     private String product;
+    @OneToMany(mappedBy = "survey", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Answer> answers;
-
-    public List<Answer> getAnswers() {
-        return answers;
-    }
-    public String getPointOfSale() {
-        return pointOfSale;
-    }
-    public String getExpectedPrice() {
-        return expectedPrice;
-    }
-    public String getProduct() {
-        return product;
-    }
-
-    public void setPointOfSale(String pointOfSale) {
-        this.pointOfSale = pointOfSale;
-    }
-
-    public void setExpectedPrice(String expectedPrice) {
-        this.expectedPrice = expectedPrice;
-    }
-
-    public void setProduct(String product) {
-        this.product = product;
-    }
-
-    public void setAnswers(List<Answer> answers) {
-        this.answers = answers;
-    }
 }
