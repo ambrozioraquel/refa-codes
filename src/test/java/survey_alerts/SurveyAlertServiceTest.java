@@ -1,10 +1,10 @@
 package survey_alerts;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 import survey_alerts.constant.AlertDescriptionType;
 import survey_alerts.domain.*;
 import survey_alerts.repository.AlertRepository;
@@ -17,6 +17,7 @@ import java.util.List;
 
 import static org.mockito.Mockito.*;
 
+@ExtendWith(MockitoExtension.class)
 class SurveyAlertServiceTest {
 
     @Mock
@@ -33,11 +34,6 @@ class SurveyAlertServiceTest {
 
     @InjectMocks
     private SurveyAlertService surveyAlertService;
-
-    @BeforeEach
-    void setUp() {
-        MockitoAnnotations.openMocks(this);
-    }
 
     @Test
     void deveGerarAlertaDeRupturaEPreco() {

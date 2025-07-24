@@ -13,7 +13,7 @@ public class UserMapper {
                 user.getEmail(),
                 user.getCreated(),
                 user.getLastUpdate(),
-                user.isActive()
+                user.getActive()
         );
     }
 
@@ -26,7 +26,7 @@ public class UserMapper {
                 userDTO.getEmail(),
                 userDTO.getCreated(),
                 userDTO.getLastUpdate(),
-                userDTO.isActive()
+                userDTO.getActive()
         );
     }
 }

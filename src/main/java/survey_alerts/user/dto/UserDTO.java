@@ -14,6 +14,6 @@ public class UserDTO {
     private String email;
     private String created;
     private String lastUpdate;
-    private boolean active;
+    private Boolean active;
 
 }
