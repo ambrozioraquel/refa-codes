@@ -25,11 +25,12 @@ public class SurveyAlertService {
         this.alertNotifier = alertNotifier;
     }
 
-    public void generateAlertsFromAllSurveys() {
+    public List<Alert> generateAlertsFromAllSurveys() {
         List<Alert> alerts = surveyRepository.findAll().stream()
                 .flatMap(survey -> alertFactory.createAlertsFromSurvey(survey).stream())
                 .toList();
         processAlerts(alerts);
+        return alerts;
     }
 
     private void processAlerts(List<Alert> alerts) {

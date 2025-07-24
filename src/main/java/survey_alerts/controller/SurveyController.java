@@ -1,7 +1,9 @@
 package survey_alerts.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import survey_alerts.domain.Alert;
 import survey_alerts.domain.Survey;
 import survey_alerts.service.SurveyAlertService;
 import survey_alerts.service.SurveyService;
@@ -9,7 +11,7 @@ import survey_alerts.service.SurveyService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/surveys")
+@RequestMapping("/survey")
 public class SurveyController {
 
     private final SurveyService surveyService;
@@ -22,17 +24,26 @@ public class SurveyController {
     }
 
     @PostMapping
-    public Survey createSurvey(@RequestBody Survey survey) {
-        return surveyService.createSurvey(survey);
+    public ResponseEntity<Survey> createSurvey(@RequestBody Survey survey) {
+        Survey createdSurvey = surveyService.createSurvey(survey);
+        return ResponseEntity.ok(createdSurvey);
     }
 
     @PostMapping("/generate-alerts")
-    public void generateAlerts() {
-        surveyAlertService.generateAlertsFromAllSurveys();
+    public ResponseEntity<List<Alert>> generateAlerts() {
+        List<Alert> alerts = surveyAlertService.generateAlertsFromAllSurveys();
+        if (alerts.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(alerts);
     }
 
     @GetMapping
-    public List<Survey> getAllSurveys() {
-        return surveyService.getAllSurveys();
+    public ResponseEntity<List<Survey>> getAllSurveys() {
+        List<Survey> surveys = surveyService.getAllSurveys();
+        if (surveys.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(surveys);
     }
 }

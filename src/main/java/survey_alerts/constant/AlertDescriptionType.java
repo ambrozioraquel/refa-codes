@@ -4,8 +4,8 @@ import lombok.Getter;
 
 @Getter
 public enum AlertDescriptionType {
-    ABSENT(1),
-    PRICE(2);
+    AUSENTE(1),
+    PRECO(2);
 
     private final int code;
 

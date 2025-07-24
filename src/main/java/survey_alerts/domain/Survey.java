@@ -1,6 +1,7 @@
 package survey_alerts.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -25,8 +26,14 @@ public class Survey {
     @JsonManagedReference
     private List<Answer> answers;
 
+
     // Dados usados para parte do Validator
+    @Transient // para não persistir no banco de dados
+    @JsonIgnore // para não serializar no JSON
     private LocalDate dateAnswered;
+
+    @Transient
+    @JsonIgnore
     private String owner;
 
     public Survey(LocalDate dateAnswered, String owner) {

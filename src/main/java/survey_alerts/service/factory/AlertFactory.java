@@ -61,7 +61,7 @@ public class AlertFactory {
                 survey.getPointOfSale(),
                 ALERT_DESC_ABSENT,
                 survey.getProduct(),
-                ABSENT,
+                AUSENTE,
                 0
         );
     }
@@ -71,7 +71,7 @@ public class AlertFactory {
                 survey.getPointOfSale(),
                 ALERT_DESC_PRICE,
                 survey.getProduct(),
-                PRICE,
+                PRECO,
                 priceDifference
         );
     }
