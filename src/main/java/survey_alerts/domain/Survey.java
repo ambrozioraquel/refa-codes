@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -23,4 +24,13 @@ public class Survey {
     @OneToMany(mappedBy = "survey", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<Answer> answers;
+
+    // Dados usados para parte do Validator
+    private Date dateAnswered;
+    private String owner;
+
+    public Survey(Date dateAnswered, String owner) {
+        this.dateAnswered = dateAnswered;
+        this.owner = owner;
+    }
 }
