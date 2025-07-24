@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import survey_alerts.domain.Email;
 import survey_alerts.repository.RepositoryMail;
 
+import java.util.List;
+
 @Service
 public class MailService {
 
@@ -17,5 +19,9 @@ public class MailService {
 
     public void send(Email email) {
         repositoryMail.save(email);
+    }
+
+    public List<Email> getAllEmails() {
+        return repositoryMail.findAll();
     }
 }

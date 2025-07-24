@@ -40,4 +40,7 @@ public class SurveyAlertService {
         });
     }
 
+    public List<Alert> getAllAlerts() {
+        return alertRepository.findAll();
+    }
 }

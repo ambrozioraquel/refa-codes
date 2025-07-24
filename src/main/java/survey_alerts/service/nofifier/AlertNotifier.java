@@ -18,7 +18,7 @@ public class AlertNotifier {
 
     public void notifyAlert(Alert alert) {
         String subject = "Alerta de Pesquisa: " + alert.getDescription();
-        String body = String.format("Ponto de venda: %s%nProduto: %s%n", alert.getPointOfSale(), alert.getProduct());
+        String body = String.format("Ponto de venda: %s%nProduto: %s", alert.getPointOfSale(), alert.getProduct());
 
         Email email = new Email();
         email.addRecipient(emailRecipient);
