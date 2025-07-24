@@ -2,13 +2,13 @@ package survey_alerts.validator.util;
 
 import survey_alerts.domain.Survey;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class SurveyBuilder {
-    private Date answeredAt = new Date();
+    private LocalDate answeredAt = LocalDate.now();
     private String owner = "default";
 
-    public SurveyBuilder answeredAt(Date date) {
+    public SurveyBuilder answeredAt(LocalDate date) {
         this.answeredAt = date;
         return this;
     }

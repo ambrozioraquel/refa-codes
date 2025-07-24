@@ -6,42 +6,43 @@ import org.junit.jupiter.api.Test;
 import survey_alerts.domain.Survey;
 import survey_alerts.validator.exception.BusinessException;
 import survey_alerts.validator.util.SurveyBuilder;
-import survey_alerts.validator.Validator;
+import survey_alerts.validator.ValidatorSurvey;
 
+import java.time.LocalDate;
 import java.util.*;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-class ValidatorTest {
+class ValidatorSurveyTest {
 
-    Validator validator;
+    ValidatorSurvey validator;
+    LocalDate currentDate;
+
 
     @BeforeEach
     void setUp() {
-        validator = new Validator();
+        currentDate = LocalDate.now();
+        validator = new ValidatorSurvey(currentDate);
     }
 
     private SurveyBuilder aSurveyBuilder() {
         return new SurveyBuilder();
     }
 
-    private Date createDate(int day, int month, int year) {
-        Calendar cal = Calendar.getInstance();
-        cal.set(year, month - 1, day, 0, 0, 0);
-        cal.set(Calendar.MILLISECOND, 0);
-        return cal.getTime();
+    private LocalDate createLocalDate(int day, int month, int year) {
+        return LocalDate.of(year, month, day);
     }
 
     @SneakyThrows
     @Test
     void shouldReturnNoErrorsWhenSurveyIsValid() {
         Survey survey = aSurveyBuilder()
-                .answeredAt(createDate(21, 9, 2019))
+                .answeredAt(createLocalDate(21, 9, 2019))
                 .withOwner("Michael")
                 .build();
-        List<String> errors = validator.validate(survey);
+        List<String> errors = validator.validateSurveyData(survey);
         assertThat(errors.size(), equalTo(0));
         assertThat(errors, equalTo(Collections.emptyList()));
     }
@@ -50,10 +51,10 @@ class ValidatorTest {
     @Test
     void shouldReturnMessageSurveyMustHaveAnOwner() {
         Survey survey = aSurveyBuilder()
-                .answeredAt(createDate(23, 9, 2019))
+                .answeredAt(createLocalDate(23, 9, 2019))
                 .withOwner("")
                 .build();
-        List<String> errors = validator.validate(survey);
+        List<String> errors = validator.validateSurveyData(survey);
         assertThat(errors.size(), equalTo(1));
         assertThat(errors, contains("Survey must have an owner."));
     }
@@ -61,17 +62,17 @@ class ValidatorTest {
     @SneakyThrows
     @Test
     void shouldThrowExceptionWhenSurveyIsNull() {
-        assertThrows(BusinessException.class, () -> validator.validate(null));
+        assertThrows(BusinessException.class, () -> validator.validateSurveyData(null));
     }
 
     @SneakyThrows
     @Test
     void shouldReturnMessageWhenAnsweredDateIsInFuture() {
         Survey survey = aSurveyBuilder()
-                .answeredAt(createDate(24, 7, 2026))
+                .answeredAt(createLocalDate(24, 7, 2026))
                 .withOwner("Michael")
                 .build();
-        List<String> errors = validator.validate(survey);
+        List<String> errors = validator.validateSurveyData(survey);
         assertThat(errors.size(), equalTo(1));
         assertThat(errors, contains("Survey can only be answered for current date."));
     }
@@ -80,10 +81,10 @@ class ValidatorTest {
     @Test
     void shouldReturnMessageWhenOwnerIsNull() {
         Survey survey = aSurveyBuilder()
-                .answeredAt(createDate(24, 7, 2025))
+                .answeredAt(createLocalDate(24, 7, 2025))
                 .withOwner(null)
                 .build();
-        List<String> errors = validator.validate(survey);
+        List<String> errors = validator.validateSurveyData(survey);
         assertThat(errors.size(), equalTo(1));
         assertThat(errors, contains("Survey must have an owner."));
     }
@@ -92,10 +93,10 @@ class ValidatorTest {
     @Test
     void shouldReturnMessageWhenOwnerIsNullAnOwnerAndDateIsInFuture() {
         Survey survey = aSurveyBuilder()
-                .answeredAt(createDate(23, 9, 2026))
+                .answeredAt(createLocalDate(23, 9, 2026))
                 .withOwner(null)
                 .build();
-        List<String> errors = validator.validate(survey);
+        List<String> errors = validator.validateSurveyData(survey);
         assertThat(errors.size(), equalTo(2));
         assertThat(errors, containsInAnyOrder(
                 "Survey can only be answered for current date.",
@@ -107,10 +108,10 @@ class ValidatorTest {
     @Test
     void shouldReturnMessageWhenOwnerIsEmptyAnOwnerAndDateIsInFuture() {
         Survey survey = aSurveyBuilder()
-                .answeredAt(createDate(23, 9, 2026))
+                .answeredAt(createLocalDate(23, 9, 2026))
                 .withOwner("")
                 .build();
-        List<String> errors = validator.validate(survey);
+        List<String> errors = validator.validateSurveyData(survey);
         assertThat(errors.size(), equalTo(2));
         assertThat(errors, containsInAnyOrder(
                 "Survey can only be answered for current date.",

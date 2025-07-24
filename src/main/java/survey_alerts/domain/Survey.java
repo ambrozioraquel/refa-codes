@@ -7,7 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -26,10 +26,10 @@ public class Survey {
     private List<Answer> answers;
 
     // Dados usados para parte do Validator
-    private Date dateAnswered;
+    private LocalDate dateAnswered;
     private String owner;
 
-    public Survey(Date dateAnswered, String owner) {
+    public Survey(LocalDate dateAnswered, String owner) {
         this.dateAnswered = dateAnswered;
         this.owner = owner;
     }
