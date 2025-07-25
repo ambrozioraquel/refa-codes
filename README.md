@@ -70,6 +70,6 @@ Projeto Spring Boot para gerar alertas baseado em respostas de questionários.
 #### Retornar usuários ativos por IDs
 `GET /user/by-ids?id=1&id=2`
 
-Na raiz do repositório está disponível uma collection criada no Postman com todas as requisições necessárias para testar os endpoints. Basta fazer o download e importar no seu postman: [https://github.com/RaquelAmbroziof/api-clientes-e-veiculos/blob/main/teste.postman_collection.json](https://github.com/ambrozioraquel/surveys-alert/blob/master/surveys.postman_collection.json)
+Na raiz do repositório está disponível uma collection criada no Postman com todas as requisições necessárias para testar os endpoints. Basta fazer o download e importar no seu postman: [[https://github.com/RaquelAmbroziof/api-clientes-e-veiculos/blob/main/teste.postman_collection.json](https://github.com/ambrozioraquel/surveys-alert/blob/master/surveys.postman_collection.json)](https://github.com/ambrozioraquel/surveys-alert/blob/master/surveys.postman_collection.json)
 
 
