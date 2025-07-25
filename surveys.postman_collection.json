@@ -1,0 +1,269 @@
+{
+	"info": {
+		"_postman_id": "a9ee799c-37b7-4d5b-b2e6-ae78977603cb",
+		"name": "surveys",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12401584",
+		"_collection_link": "https://me4444-4866.postman.co/workspace/PESSOAL~5b4cf0df-db9f-41bc-97f7-038d53193ce4/collection/12401584-a9ee799c-37b7-4d5b-b2e6-ae78977603cb?action=share&source=collection_link&creator=12401584"
+	},
+	"item": [
+		{
+			"name": "survey",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"pointOfSale\": \"Loja 1\",\r\n  \"expectedPrice\": \"5\",\r\n  \"product\": \"Arroz\",\r\n  \"answers\": [\r\n    {\r\n      \"question\": \"Qual a situação do produto?\",\r\n      \"answerData\": \"Produto ausente na gondola\"\r\n    },\r\n    {\r\n      \"question\": \"Qual o preço do produto?\",\r\n      \"answerData\": \"6\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/survey",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"survey"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "survey",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"pointOfSale\": \"Loja 1\",\r\n  \"expectedPrice\": \"5\",\r\n  \"product\": \"Arroz\",\r\n  \"answers\": [\r\n    {\r\n      \"question\": \"Qual a situação do produto?\",\r\n      \"answerData\": \"Produto ausente na gondola\"\r\n    },\r\n    {\r\n      \"question\": \"Qual o preço do produto?\",\r\n      \"answerData\": \"6\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/survey",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"survey"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "generate-alerts",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/alert",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"alert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "alerts",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"pointOfSale\": \"Loja 1\",\r\n  \"expectedPrice\": \"5\",\r\n  \"product\": \"Arroz\",\r\n  \"answers\": [\r\n    {\r\n      \"question\": \"Qual a situação do produto?\",\r\n      \"answerData\": \"Produto ausente na gondola\"\r\n    },\r\n    {\r\n      \"question\": \"Qual o preço do produto?\",\r\n      \"answerData\": \"6\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/alert",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"alert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "email",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"pointOfSale\": \"Loja 1\",\r\n  \"expectedPrice\": \"5\",\r\n  \"product\": \"Arroz\",\r\n  \"answers\": [\r\n    {\r\n      \"question\": \"Qual a situação do produto?\",\r\n      \"answerData\": \"Produto ausente na gondola\"\r\n    },\r\n    {\r\n      \"question\": \"Qual o preço do produto?\",\r\n      \"answerData\": \"6\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/mail",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"mail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"login\": \"mariasilva\",\r\n  \"name\": \"Maria Silva\",\r\n  \"email\": \"mariasilva@email.com\",\r\n  \"created\": \"2024-06-10T10:00:00\",\r\n  \"lastUpdate\": \"2024-06-10T10:00:00\",\r\n  \"active\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "id",
+							"value": "2",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"login\": \"jdoe\",\r\n  \"name\": \"John Doe\",\r\n  \"email\": \"jdoe@email.com\",\r\n  \"created\": \"2024-06-10T10:00:00\",\r\n  \"lastUpdate\": \"2024-06-10T10:00:00\",\r\n  \"active\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user/by-ids",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"pointOfSale\": \"Loja 1\",\r\n  \"expectedPrice\": \"5\",\r\n  \"product\": \"Arroz\",\r\n  \"answers\": [\r\n    {\r\n      \"question\": \"Qual a situação do produto?\",\r\n      \"answerData\": \"Produto ausente na gondola\"\r\n    },\r\n    {\r\n      \"question\": \"Qual o preço do produto?\",\r\n      \"answerData\": \"6\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/user/by-ids?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"by-ids"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
